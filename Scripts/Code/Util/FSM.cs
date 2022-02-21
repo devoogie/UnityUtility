@@ -65,5 +65,11 @@ public class FSM<T> where T : System.Enum
             return;
         SwitchState(CurrentState.LeaveTo);
     }
+    public void Progress()
+    {
+        if (stateMachine.currentState == null)
+            return;
+        stateMachine.currentState.OnProgress();
+    }
 
 }
