@@ -30,6 +30,10 @@ public class PoolManager : MonoSingleton<PoolManager>
         poolableMono.OnMonoSpawn();
         return poolableMono as T;
     }
+    public static T Spawn<T>(System.Enum name) where T : PoolableMono
+    {
+        return Spawn<T>(name.ToString());
+    }
     public static T Spawn<T>(string name) where T : PoolableMono
     {
         var pool = Instance.Pools[name];

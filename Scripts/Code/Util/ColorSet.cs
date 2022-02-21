@@ -8,7 +8,7 @@ public static class ColorSet
     public static readonly Color HP = "#08DA1F".ToColor();
     public static readonly Color Shield = "#00CDF9".ToColor();
     public static readonly Color Highlight = "#ff7f00".ToColor();
-    public static readonly Color Pink = "#FF75E9".ToColor();
+    public static readonly Color Pink = "#B177C1".ToColor();
     public static readonly Color TranslucentBlack = "#00000080".ToColor();
     public static readonly Color TranslucentWhite = "#ffffff80".ToColor();
     public static readonly Color ClearBlack = "#00000000".ToColor();
