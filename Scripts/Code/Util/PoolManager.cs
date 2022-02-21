@@ -10,7 +10,7 @@ public class PoolManager : MonoSingleton<PoolManager>
     {
         OnEventReset?.Invoke();
         Pools.Clear();
-        var pools = Resources.LoadAll<PoolableMono>("Game");
+        var pools = Resources.LoadAll<PoolableMono>("Pool");
         foreach (var resource in pools)
         {
             var pool = new PoolMono(resource);
