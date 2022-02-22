@@ -6,7 +6,6 @@ public abstract class PoolableMono : MonoBehaviour, IPoolableMono
     public virtual void OnMonoSpawn()
     {
         gameObject.SetActive(true);
-        Debug.Log($"Spawn {name}");
     }
     public void Despawn()
     {
@@ -22,7 +21,6 @@ public abstract class PoolableMono : MonoBehaviour, IPoolableMono
     public virtual void OnMonoDespawn()
     {
         gameObject.SetActive(false);
-        Debug.Log($"Despawn {name}");
     }
     public void OnClear()
     {
