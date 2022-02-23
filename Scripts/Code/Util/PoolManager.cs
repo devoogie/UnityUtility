@@ -23,6 +23,12 @@ public class PoolManager : MonoSingleton<PoolManager>
         pool.Despawn(despawn);
         despawn.transform.Identity(pool.Branch);
     }
+    public static void DespawnAll<T>() where T : PoolableMono
+    {
+        var name = typeof(T).ToString();
+        var pool = Instance.Pools[name];
+        pool.Clear();
+    }
     public static T Spawn<T>() where T : PoolableMono
     {
         var pool = Instance.Pools[typeof(T).ToString()];
