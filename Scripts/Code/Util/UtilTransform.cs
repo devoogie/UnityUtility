@@ -15,4 +15,10 @@ public static partial class Util
         transform.SetParent(parent);
         transform.Identity();
     }
+    public static void Copy(this Transform transform,Transform target)
+    {
+        transform.localPosition = target.localPosition;
+        transform.localScale = target.localScale;
+        transform.localRotation = target.localRotation;
+    }
 }
