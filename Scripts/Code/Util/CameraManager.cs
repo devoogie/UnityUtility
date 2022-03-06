@@ -24,7 +24,8 @@ public class CameraManager : MonoSingleton<CameraManager>, IManager
     [System.Serializable]
     public class CameraSetting
     {
-        public Vector3 TargetPosition;
+        public Vector3 Position;
+        public Vector3 Rotation;
         public float SpeedFollowMove = .5f;
         public float CameraZoom = 15f;
         public float SpeedZoom = 0.05f;

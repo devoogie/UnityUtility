@@ -3,7 +3,7 @@ public class CameraRig : MonoBehaviour
 {
     void LateUpdate()
     {
-        transform.position = Vector3.Lerp(transform.position, CameraManager.Setting.TargetPosition, CameraManager.Setting.SpeedFollowMove);
+        transform.position = Vector3.Lerp(transform.position, CameraManager.Setting.Position, CameraManager.Setting.SpeedFollowMove);
         if (CameraManager.Setting.IsFollowZoom == false)
         {
             float zoom = Mathf.Lerp(
