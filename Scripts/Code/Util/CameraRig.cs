@@ -4,6 +4,7 @@ public class CameraRig : MonoBehaviour
     void LateUpdate()
     {
         transform.position = Vector3.Lerp(transform.position, CameraManager.Setting.Position, CameraManager.Setting.SpeedFollowMove);
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(CameraManager.Setting.Rotation), CameraManager.Setting.SpeedFollowMove);
         if (CameraManager.Setting.IsFollowZoom == false)
         {
             float zoom = Mathf.Lerp(
