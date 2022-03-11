@@ -7,10 +7,11 @@ using TMPro;
 
 public abstract class UI<T> : PoolableMono
 {
+    public static System.Action OnUpdateInfo;
     public RectTransform rectTransform => transform as RectTransform;
     Dictionary<Type, UnityEngine.Object[]> _objects = new Dictionary<Type, UnityEngine.Object[]>();
-   
-    protected void Bind<TBind,TEnum>() where TBind : UnityEngine.Object
+
+    protected void Bind<TBind, TEnum>() where TBind : UnityEngine.Object
     {
         var type = typeof(TEnum);
         var names = Enum.GetNames(type);
@@ -32,9 +33,9 @@ public abstract class UI<T> : PoolableMono
 
         return objects[index] as TBind;
     }
-    protected void BindText<TEnum>() => Bind<TextMeshProUGUI,TEnum>();
-    protected void BindImage<TEnum>() => Bind<Image,TEnum>();
-    protected void BindButton<TEnum>() => Bind<Button,TEnum>();
+    protected void BindText<TEnum>() => Bind<TextMeshProUGUI, TEnum>();
+    protected void BindImage<TEnum>() => Bind<Image, TEnum>();
+    protected void BindButton<TEnum>() => Bind<Button, TEnum>();
     protected TextMeshProUGUI GetText(System.Enum index) { return GetBind<TextMeshProUGUI>(Convert.ToInt32(index)); }
     protected Image GetImage(System.Enum index) { return GetBind<Image>(Convert.ToInt32(index)); }
     protected Button GetButton(System.Enum index) { return GetBind<Button>(Convert.ToInt32(index)); }
@@ -45,9 +46,15 @@ public abstract class UI<T> : PoolableMono
         rectTransform.localScale = Vector3.one;
         rectTransform.rotation = Quaternion.identity;
     }
-    public virtual void UpdateInfo()
+    void OnEnable()
     {
+        OnUpdateInfo += UpdateInfo;
+    }
+    void OnDisable()
+    {
+        OnUpdateInfo -= UpdateInfo;
 
     }
+    public abstract void UpdateInfo();
 
 }

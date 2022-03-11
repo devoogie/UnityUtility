@@ -158,7 +158,7 @@ public static partial class Util
     {
         if (pivot >= 1)
             return true;
-        return UnityEngine.Random.Range(0, 1) < pivot;
+        return UnityEngine.Random.Range(0, 1f) < pivot;
     }
     public static bool IsPassRate(int value, int max)
     {

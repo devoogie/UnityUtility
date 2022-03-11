@@ -10,7 +10,13 @@ public class PoolManager : MonoSingleton<PoolManager>
     {
         OnEventReset?.Invoke();
         Pools.Clear();
-        var pools = Resources.LoadAll<PoolableMono>("Pool");
+        AddPool("Pool");
+        // AddPool("Pool/Bullet");
+        
+    }
+    void AddPool(string path)
+    {
+        var pools = Resources.LoadAll<PoolableMono>(path);
         foreach (var resource in pools)
         {
             var pool = new PoolMono(resource);
@@ -23,9 +29,8 @@ public class PoolManager : MonoSingleton<PoolManager>
         pool.Despawn(despawn);
         despawn.transform.Identity(pool.Branch);
     }
-    public static void DespawnAll<T>() where T : PoolableMono
+    public static void DespawnAll(string name)
     {
-        var name = typeof(T).ToString();
         var pool = Instance.Pools[name];
         pool.Clear();
     }
@@ -47,9 +52,9 @@ public class PoolManager : MonoSingleton<PoolManager>
         poolableMono.OnMonoSpawn();
         return poolableMono as T;
     }
-    public static int GetCount<T>() where T : PoolableMono
+    public static int GetCount(string key)
     {
-        var pool = Instance.Pools[typeof(T).ToString()];
+        var pool = Instance.Pools[key];
         return pool.SpawnCount;
     }
 }
