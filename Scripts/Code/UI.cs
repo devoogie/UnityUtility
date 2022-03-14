@@ -7,7 +7,7 @@ using TMPro;
 
 public abstract class UI<T> : PoolableMono
 {
-    public static System.Action OnUpdateInfo;
+    public static System.Action Refresh;
     public RectTransform rectTransform => transform as RectTransform;
     Dictionary<Type, UnityEngine.Object[]> _objects = new Dictionary<Type, UnityEngine.Object[]>();
 
@@ -48,11 +48,11 @@ public abstract class UI<T> : PoolableMono
     }
     void OnEnable()
     {
-        OnUpdateInfo += UpdateInfo;
+        Refresh += UpdateInfo;
     }
     void OnDisable()
     {
-        OnUpdateInfo -= UpdateInfo;
+        Refresh -= UpdateInfo;
 
     }
     public abstract void UpdateInfo();
