@@ -30,7 +30,7 @@ public class CircleRenderer : PoolableMono
             float x = Mathf.Cos(currentRadian) * radius;
             float y = Mathf.Sin(currentRadian) * radius;
 
-            Vector3 currentPosition = new Vector3(x, 0.1f, y);
+            Vector3 currentPosition = new Vector3(x, 0.1f, y) + transform.position;
 
             lineRenderer.SetPosition(i, currentPosition);
         }
