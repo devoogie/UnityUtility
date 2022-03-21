@@ -30,24 +30,6 @@ public static partial class Util
         origin.sizeDelta = target.sizeDelta;
         origin.pivot = target.pivot;
     }
-    public static void PopDrop(this RectTransform rectTransform, int delay, float scale = 1, float startScale = 1.25f, TweenCallback onComplete = null)
-    {
-        rectTransform.DOKill();
-        rectTransform.localScale = Vector3.one * startScale * scale;
-        rectTransform.DOScale(scale, 0.35f)
-                     .SetEase(Ease.InOutBack)
-                     .SetDelay(0.2f * delay)
-                     .OnComplete(onComplete);
-    }
-    public static void PopZoom(this RectTransform rectTransform, int delay, float scale = 1, float startScale = 0, TweenCallback onComplete = null)
-    {
-        rectTransform.DOKill();
-        rectTransform.DOScale(scale, 0.35f)
-                     .SetDelay(delay * 0.2f)
-                     .SetEase(Ease.OutBack)
-                     .OnStart(() => rectTransform.localScale = Vector3.one * startScale)
-                     .OnComplete(onComplete);
-    }
     public static bool IsPointerOver(this RectTransform rectTransform, Vector2 screenPosition)
     {
         return RectTransformUtility.RectangleContainsScreenPoint(rectTransform, screenPosition, Camera.main);
