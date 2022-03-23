@@ -38,10 +38,11 @@ public class Line : PoolableMono
         {
             var position = circle.ToXZ();
             position.y = 0.1f;
-            lineRenderer.SetPosition(count,position );
+            position += transform.position;
+            lineRenderer.SetPosition(count, position);
             count++;
         }
-        
+
     }
     public void SetColor(Color color)
     {
