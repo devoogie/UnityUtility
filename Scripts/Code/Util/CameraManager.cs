@@ -31,5 +31,6 @@ public class CameraManager : MonoSingleton<CameraManager>, IManager
         public float SpeedZoom = 0.05f;
         public float SpeedFollowZoom = 0.05f;
         public bool IsFollowZoom = false;
+        public bool IsFitTarget = false;
     }
 }
