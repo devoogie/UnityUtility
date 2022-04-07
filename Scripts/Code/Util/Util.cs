@@ -256,6 +256,10 @@ public static partial class Util
     {
         return Time.time - startTime > duration;
     }
+    public static bool IsPassTime(this float time)
+    {
+        return Time.time > time;
+    }
 
 
     // public static List<T> RandomRange<T>(this List<T> variable, int max, bool isCopy = false)
