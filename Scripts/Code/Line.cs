@@ -49,4 +49,9 @@ public class Line : PoolableMono
         lineRenderer.startColor = color;
         lineRenderer.endColor = color;
     }
+    public void SetSize(float size)
+    {
+        lineRenderer.startWidth = size;
+        lineRenderer.endWidth = size;
+    }
 }
