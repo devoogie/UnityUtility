@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public abstract class UI<T> : PoolableMono
+public abstract class UI : PoolableMono
 {
     public static System.Action Refresh;
     public RectTransform rectTransform => transform as RectTransform;
