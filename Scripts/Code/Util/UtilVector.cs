@@ -177,7 +177,7 @@ public static partial class Util
         return circle;
     }
 
-    public static Vector2 RandomPoint(this BoxCollider2D collider2D)
+    public static Vector2 RandomBound(this BoxCollider2D collider2D)
     {
         var point = new Vector2(
             UnityEngine.Random.Range(collider2D.bounds.min.x, collider2D.bounds.max.x),

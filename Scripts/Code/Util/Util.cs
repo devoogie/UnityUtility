@@ -252,6 +252,10 @@ public static partial class Util
         }
         return returnValue;
     }
+    public static bool IsWaitTime(this float time)
+    {
+        return !IsPassTime(time);
+    }
     public static bool IsPassTime(float startTime, float duration)
     {
         return Time.time - startTime > duration;
@@ -317,6 +321,10 @@ public static partial class Util
     public static int ToCeil(this float target)
     {
         return Mathf.CeilToInt(target);
+    }
+    public static int ToRound(this float target)
+    {
+        return Mathf.RoundToInt(target);
     }
 }
 
