@@ -48,13 +48,14 @@ public abstract class UI : PoolableMono
     }
     void OnEnable()
     {
-        Refresh += UpdateInfo;
+        Refresh -= RefreshUI;
+        Refresh += RefreshUI;
     }
     void OnDisable()
     {
-        Refresh -= UpdateInfo;
+        Refresh -= RefreshUI;
 
     }
-    public abstract void UpdateInfo();
+    public abstract void RefreshUI();
 
 }
