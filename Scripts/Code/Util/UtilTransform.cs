@@ -22,7 +22,7 @@ public static partial class Util
         transform.localScale = target.localScale;
         transform.localRotation = target.localRotation;
     }
-    public static void PopDrop(this Transform transform, int delay, float scale = 1, float startScale = 1.25f, TweenCallback onComplete = null)
+    public static void PopDrop(this Transform transform, int delay = 0, float scale = 1, float startScale = 1.25f, TweenCallback onComplete = null)
     {
         transform.DOKill();
         transform.localScale = Vector3.one * startScale * scale;
@@ -31,7 +31,7 @@ public static partial class Util
                      .SetDelay(0.2f * delay)
                      .OnComplete(onComplete);
     }
-    public static void PopZoom(this Transform transform, int delay, float scale = 1, float startScale = 0, TweenCallback onComplete = null)
+    public static void PopZoom(this Transform transform, int delay = 0, float scale = 1, float startScale = 0, TweenCallback onComplete = null)
     {
         transform.DOKill();
         transform.DOScale(scale, 0.35f)
