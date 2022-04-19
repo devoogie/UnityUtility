@@ -185,4 +185,13 @@ public static partial class Util
         );
         return point;
     }
+    public static bool IsInside(this BoxCollider2D collider2D, Vector2 point)
+    {
+        var min =  collider2D.bounds.min;
+        var max =  collider2D.bounds.max;
+        bool isInsideX = (point.x > min.x && point.x < max.x);
+        bool isInsideY = (point.y > min.y && point.y < max.y);
+        
+        return isInsideX && isInsideY;
+    }
 }

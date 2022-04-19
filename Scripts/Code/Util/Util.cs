@@ -5,7 +5,6 @@ using System.ComponentModel;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
-
 public partial class Util
 {
     public static GameObject FindChild(GameObject go, string name = null, bool isRecursive = false)
