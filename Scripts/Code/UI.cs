@@ -4,13 +4,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public abstract class UI : PoolableMono
 {
     public static System.Action Refresh;
     public RectTransform rectTransform => transform as RectTransform;
     Dictionary<Type, UnityEngine.Object[]> _objects = new Dictionary<Type, UnityEngine.Object[]>();
+    public RectTransform inner;
 
+    public void AnimateOpen()
+    {
+        if(inner == null)
+            return;
+
+        inner.localScale = Vector3.zero;
+        inner.DOScale(Vector3.one, 0.3f).SetEase(Ease.OutBack);
+    }
     protected void Bind<TBind, TEnum>() where TBind : UnityEngine.Object
     {
         var type = typeof(TEnum);

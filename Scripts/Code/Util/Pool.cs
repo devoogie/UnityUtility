@@ -28,12 +28,18 @@ public abstract class Pool<T> where T : IPoolObject
     }
     private void CheckAddPool()
     {
-        if (CheckSpawnable()) 
+        if (CheckSpawnable())
             return;
+        Add();
+    }
+
+    private void Add()
+    {
         var create = (T)Clone();
         create.OnInitialize();
         _pooled.Push(create);
     }
+
     private bool CheckSpawnable()
     {
         while(_pooled.Count > 0)
