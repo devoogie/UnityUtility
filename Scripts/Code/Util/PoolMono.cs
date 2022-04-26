@@ -19,4 +19,24 @@ public class PoolMono : Pool<PoolableMono>
         Branch.SetParent(PoolManager.Root);
     }
 
+    protected override PoolableMono SpawnFromDisable()
+    {
+        var spawn = base.SpawnFromDisable();
+        spawn.OnMonoSpawn();
+        return spawn;
+    }
+
+
+    protected override PoolableMono Add()
+    {
+        var create = base.Add();
+        create.OnMonoInitialize();
+        return create;
+    }
+    
+    public override void Despawn(PoolableMono a)
+    {
+        base.Despawn(a);
+        a.OnMonoDespawn();
+    }
 }

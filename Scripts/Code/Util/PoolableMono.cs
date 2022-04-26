@@ -3,32 +3,79 @@ using UnityEngine;
 
 public abstract class PoolableMono : MonoBehaviour, IPoolableMono
 {
-    public virtual void OnMonoSpawn()
-    {
-        gameObject.SetActive(true);
-    }
     public void Despawn()
     {
         if (this == null)
             return;
         PoolManager.Despawn(this);
-        OnMonoDespawn();
     }
     public abstract void OnInitialize();
     public abstract void OnSpawn();
     public abstract void OnDespawn();
-
-    public virtual void OnMonoDespawn()
-    {
-        gameObject.SetActive(false);
-    }
     public void OnClear()
     {
         Destroy(gameObject);
     }
+
+    public List<PoolableMono> children = new List<PoolableMono>();
+    
+    public virtual void OnMonoDespawn()
+    {
+        if(statePool == StatePool.Despawn)
+            return;
+        statePool = StatePool.Despawn;
+        gameObject.SetActive(false);
+        foreach (var child in children)
+        {
+            if(child == this)
+                continue;
+            child.OnDespawn();
+            child.OnMonoDespawn();
+        }
+    }
+    bool isInitialized = false;
+    StatePool statePool = StatePool.Despawn;
+    protected bool isChild = false;
+    public void OnMonoInitialize()
+    {
+        if(isInitialized)
+            return;
+        isInitialized = true;
+        var components = transform.GetComponentsInChildren<PoolableMono>(true);
+        foreach (var child in components)
+        {
+            if(child == this)
+                continue;
+            child.isChild = true;
+            children.Add(child);        
+            child.OnInitialize();
+            child.OnMonoInitialize();
+        }
+    }
+    public virtual void OnMonoSpawn()
+    {
+        if(statePool == StatePool.Spawn)
+            return;
+        statePool = StatePool.Spawn;
+        gameObject.SetActive(true);
+        foreach (var child in children)
+        {
+            if(child == this)
+                continue;
+            child.OnSpawn();
+            child.OnMonoSpawn();
+        }
+    }
+    
+}
+public enum StatePool
+{
+    Spawn,
+    Despawn
 }
 public interface IPoolableMono : IPoolObject
 {
+    void OnMonoInitialize();
     void OnMonoSpawn();
     void OnMonoDespawn();
 }

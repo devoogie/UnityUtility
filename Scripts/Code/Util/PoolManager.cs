@@ -38,7 +38,6 @@ public class PoolManager : MonoSingleton<PoolManager>
     {
         var pool = Instance.Pools[typeof(T).ToString()];
         var poolableMono = pool.Spawn();
-        poolableMono.OnMonoSpawn();
         return poolableMono as T;
     }
     public static T Spawn<T>(System.Enum name) where T : PoolableMono
@@ -49,7 +48,6 @@ public class PoolManager : MonoSingleton<PoolManager>
     {
         var pool = Instance.Pools[name];
         var poolableMono = pool.Spawn();
-        poolableMono.OnMonoSpawn();
         return poolableMono as T;
     }
     public static int GetCount(string key)

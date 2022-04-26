@@ -52,6 +52,8 @@ public abstract class UI : PoolableMono
     public override void OnMonoSpawn()
     {
         base.OnMonoSpawn();
+        if(isChild)
+            return;
         rectTransform.SetParent(UIManager.Main.transform);
         rectTransform.localScale = Vector3.one;
         rectTransform.rotation = Quaternion.identity;

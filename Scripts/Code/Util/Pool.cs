@@ -19,7 +19,7 @@ public abstract class Pool<T> where T : IPoolObject
         CheckAddPool();
         return SpawnFromDisable();
     }
-    private T SpawnFromDisable()
+    protected virtual T SpawnFromDisable()
     {
         var spawn = _pooled.Pop();
         _spawned.Add(spawn);
@@ -33,11 +33,12 @@ public abstract class Pool<T> where T : IPoolObject
         Add();
     }
 
-    private void Add()
+    protected virtual T Add()
     {
         var create = (T)Clone();
         create.OnInitialize();
         _pooled.Push(create);
+        return create;
     }
 
     private bool CheckSpawnable()
@@ -51,7 +52,7 @@ public abstract class Pool<T> where T : IPoolObject
         }
         return _pooled.Count > 0;
     }
-    public void Despawn(T a)
+    public virtual void Despawn(T a)
     {
         a.OnDespawn();
         _spawned.Remove(a);
