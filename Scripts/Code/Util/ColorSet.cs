@@ -24,4 +24,11 @@ public static class ColorSet
     public static readonly Color Grade_Rare_Upgrade = "#6FAEBC".ToColor();
     public static readonly Color Grade_Epic_Upgrade = "#B177C1".ToColor();
     public static readonly Color Grade_Legend_Upgrade = "#D19A4C".ToColor();
+
+
+
+    public static readonly Color Info_Primary = "#DCC400".ToColor();
+    public static readonly Color Info_Secondary = "#0861DA".ToColor();
+    public static readonly Color Info_Negative = "#D5000F".ToColor();
+    public static readonly Color Info_Positive = "#08DA1F".ToColor();
 }
