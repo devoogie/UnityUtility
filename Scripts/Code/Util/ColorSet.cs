@@ -31,6 +31,7 @@ public static class ColorSet
     public static readonly Color Info_Secondary = "#0861DA".ToColor();
     public static readonly Color Info_Negative = "#D5000F".ToColor();
     public static readonly Color Info_Positive = "#08DA1F".ToColor();
+    public static readonly Color Info_Lock = "#AEAAAA".ToColor();
 
     public static readonly Color Status_Health = "#D5000F".ToColor();
     public static readonly Color Status_Damage = "#BE41DC".ToColor();
