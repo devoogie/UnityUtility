@@ -46,6 +46,8 @@ public abstract class PoolableMono : MonoBehaviour, IPoolableMono
         {
             if(child == this)
                 continue;
+            if(child.isChild)
+                continue;
             child.isChild = true;
             children.Add(child);        
             child.OnInitialize();
