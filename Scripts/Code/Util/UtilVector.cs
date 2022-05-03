@@ -9,7 +9,7 @@ public enum Direction
     Right,
     Left,
 }
-public static partial class Util
+public static partial class Utility
 {
     public readonly static Vector2 SlopeVector2 = new Vector2(-1, -1);
 

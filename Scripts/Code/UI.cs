@@ -31,9 +31,9 @@ public abstract class UI : PoolableMono
         for (int i = 0; i < names.Length; i++)
         {
             if (typeof(TBind) == typeof(GameObject))
-                objects[i] = Util.FindChild(gameObject, names[i], false);
+                objects[i] = Utility.FindChild(gameObject, names[i], false);
             else
-                objects[i] = Util.FindChild<TBind>(gameObject, names[i], false);
+                objects[i] = Utility.FindChild<TBind>(gameObject, names[i], false);
         }
     }
     protected TBind GetBind<TBind>(int index) where TBind : UnityEngine.Object

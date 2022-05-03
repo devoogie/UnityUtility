@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-public static partial class Util
+public static partial class Utility
 {
     public static void Shake(this Transform transform, float duration = 0.5f,float strength = 1,int vibrato = 10,TweenCallback endCallback = null)
     {

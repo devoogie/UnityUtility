@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
-public static partial class Util
+public static partial class Utility
 {
     public static void Identity(this Transform transform)
     {

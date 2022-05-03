@@ -12,7 +12,7 @@ using UnityEngine;
 //     SkillCard = 1 << 4,
 //     PassiveCard = 1 << 5,
 // }
-public static partial class Util
+public static partial class Utility
 {
     public static bool BitExist(this uint origin, uint compare)
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public static partial class Util
+public static partial class Utility
 {
     public static Color ToColor(this string hexcode)
     {

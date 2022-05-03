@@ -5,7 +5,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
-public partial class Util
+public partial class Utility
 {
     public static GameObject FindChild(GameObject go, string name = null, bool isRecursive = false)
     {
@@ -46,7 +46,7 @@ public partial class Util
 
 }
 
-public static partial class Util
+public static partial class Utility
 {
     #region Array
     public static T Random<T>(this T[] array)
@@ -243,7 +243,7 @@ public static partial class Util
         T returnValue = default(T);
         if (valueToParse.IsNullOfEmpty())
             return returnValue;
-        string value = Util.StringAppend(valueToParse[0].ToString().ToUpper(), valueToParse.Substring(1));
+        string value = Utility.StringAppend(valueToParse[0].ToString().ToUpper(), valueToParse.Substring(1));
         if (System.Enum.IsDefined(typeof(T), value))
         {
             TypeConverter converter = TypeDescriptor.GetConverter(typeof(T));

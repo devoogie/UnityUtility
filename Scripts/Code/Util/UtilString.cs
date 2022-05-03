@@ -13,7 +13,7 @@ public enum Align
     center,
     right
 }
-public static partial class Util
+public static partial class Utility
 {
     private static System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
     public const string RichTextFormat = "<{0}={1}>{2}</{0}>";
@@ -143,8 +143,8 @@ public static partial class Util
             return contents;
         string lv = " +";
         if (level > 1)
-            lv = Util.StringAppend(lv, (level).ToString());
-        contents = Util.StringAppend(contents, lv.SetVOffset(0.4f).SetSize(70));
+            lv = Utility.StringAppend(lv, (level).ToString());
+        contents = Utility.StringAppend(contents, lv.SetVOffset(0.4f).SetSize(70));
         return contents;
     }
 
