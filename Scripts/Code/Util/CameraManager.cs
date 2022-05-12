@@ -2,22 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraManager : MonoSingleton<CameraManager>, IManager
+public static class CameraManager
 {
-    public CameraSetting setting = new CameraSetting();
-    public static CameraSetting Setting => Instance.setting;
-    public override void Initialize()
-    {
-    }
-    /// <summary>
-    /// LateUpdate is called every frame, if the Behaviour is enabled.
-    /// It is called after all Update functions have been called.
-    /// </summary>
-
-
+    public static CameraSetting Setting;
+    
     public static Vector3 GetPositionWorldToRect(Vector3 world)
     {
-
         return Camera.main.WorldToScreenPoint(world);
     }
 
