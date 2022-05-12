@@ -20,12 +20,12 @@ namespace MVC
 }
 public interface IState<T> where T : System.Enum
 {
+    System.Action Leave{get;set;}
+    T LeaveTo { get; }
     void Initialize();
     void OnEnter();
     void OnProgress();
     void OnLeave();
-    void LeaveState();
-    T LeaveTo { get; }
 }
 
 public interface IAdventureSystem
