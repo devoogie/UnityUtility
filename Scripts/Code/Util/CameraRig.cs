@@ -1,16 +1,9 @@
 using UnityEngine;
 public class CameraRig : MonoBehaviour
 {
-    void LateUpdate()
-    {
-        Move();
-        if (CameraManager.Setting.IsFollowZoom == false)
-        {
-            Zoom();
-        }
-    }
+    
 
-    private static void Zoom()
+    public static void Zoom()
     {
         float cameraZoom = GetZoomRatio();
         float zoom = Mathf.Lerp(
@@ -20,7 +13,7 @@ public class CameraRig : MonoBehaviour
         Camera.main.orthographicSize = zoom;
     }
 
-    private static float GetZoomRatio()
+    public static float GetZoomRatio()
     {
         float cameraZoom = CameraManager.Setting.CameraZoom;
         int width = Screen.width;
@@ -30,7 +23,7 @@ public class CameraRig : MonoBehaviour
         return cameraZoom;
     }
 
-    private void Move()
+    public void Move()
     {
         var position = Vector3.Lerp(transform.position, CameraManager.Setting.Position, CameraManager.Setting.SpeedFollowMove);
         var rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(CameraManager.Setting.Rotation), CameraManager.Setting.SpeedFollowMove);
