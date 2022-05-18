@@ -1,18 +1,38 @@
 using System.Collections.Generic;
 
-public class ObserveSubject<T,TEvent>
+public abstract class EventSubject<T,TEventParam> where T : IEventObserver<TEventParam>
 {
-    List<T> targetList = new List<T>();
+    static List<T> targetList = new List<T>();
 
-    public ObserveSubject<T,TEvent> OnNotify(TEvent eventType)
+    public void OnNotify(TEventParam eventType)
     {
-        
-        return this;
+        for (int i = targetList.Count - 1; i >= 0; i--)
+        {
+            T target = targetList[i];
+            target.OnNotify(eventType);
+        }
     }
+    public void OnNotify()
+    {
+        for (int i = targetList.Count - 1; i >= 0; i--)
+        {
+            T target = targetList[i];
+            target.OnNotify();
+        }
+    }
+    public static void Add(T observer)
+    {
+        targetList.Add(observer);
+    }
+    public static void Remove(T observer)
+    {
+        targetList.Remove(observer);
+    }
+
 }
-public interface IObserver<T,TEvent>
+public interface IEventObserver<TEventParam>
 {
-    void OnNotify(TEvent TEvent);
-    T AddObserver(ObserveSubject<T,TEvent> observer);
-    T RemoveObserver(ObserveSubject<T,TEvent> observer);
+    void OnNotify();
+    void OnNotify(TEventParam eventParam);
+
 }
