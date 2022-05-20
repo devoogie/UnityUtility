@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraManager : MonoSingleton<CameraManager>
 {
-    public static CameraSetting Setting;
+    public static CameraSetting Setting = new CameraSetting();
     public CameraRig CameraRig;
     public static Vector3 GetPositionWorldToRect(Vector3 world)
     {
@@ -31,7 +31,7 @@ public class CameraManager : MonoSingleton<CameraManager>
         public Vector3 Position;
         public Vector3 Rotation;
         public float SpeedFollowMove = .5f;
-        public float CameraZoom = 15f;
+        public float CameraZoom =  10f;
         public float SpeedZoom = 0.05f;
         public float SpeedFollowZoom = 0.05f;
         public bool IsFollowZoom = false;
