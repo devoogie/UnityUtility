@@ -9,7 +9,7 @@ public abstract class PoolableMono : MonoBehaviour, IPoolableMono
             return;
         PoolManager.Despawn(this);
     }
-    public abstract void OnInitialize();
+    public abstract void OnCreate();
     public abstract void OnSpawn();
     public abstract void OnDespawn();
     public void OnClear()
@@ -50,7 +50,7 @@ public abstract class PoolableMono : MonoBehaviour, IPoolableMono
                 continue;
             child.isChild = true;
             children.Add(child);        
-            child.OnInitialize();
+            child.OnCreate();
             child.OnMonoInitialize();
         }
     }

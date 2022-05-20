@@ -36,7 +36,7 @@ public abstract class Pool<T> where T : IPoolObject
     protected virtual T Add()
     {
         var create = (T)Clone();
-        create.OnInitialize();
+        create.OnCreate();
         _pooled.Push(create);
         return create;
     }
@@ -72,7 +72,7 @@ public abstract class Pool<T> where T : IPoolObject
 }
 public interface IPoolObject
 {
-    void OnInitialize();
+    void OnCreate();
     void OnSpawn();
     void OnDespawn();
     void OnClear();

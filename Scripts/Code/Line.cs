@@ -14,7 +14,7 @@ public class Line : PoolableMono
     {
         lineRenderer.material = material;
     }
-    public override void OnInitialize()
+    public override void OnCreate()
     {
         lineRenderer = GetComponentInChildren<LineRenderer>();
     }
