@@ -18,7 +18,7 @@ public class FSM<T> where T : System.Enum
     public void AddState(T stateType, IState<T> iState)
     {
         iState.Initialize();
-        iState.Leave = LeaveCurrent;
+        iState.Leave += LeaveCurrent;
         stateDictionary.Add(stateType, iState);
     }
     public void SetState(T stateType)

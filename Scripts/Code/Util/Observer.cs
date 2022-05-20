@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 
-public abstract class EventSubject<T,TEventParam> where T : IEventObserver<TEventParam>
+public abstract class EventSubject<T> where T : IEventObserver
 {
     static List<T> targetList = new List<T>();
 
-    public void OnNotify(TEventParam eventType)
+    public static void OnNotify(object eventType)
     {
         for (int i = targetList.Count - 1; i >= 0; i--)
         {
@@ -12,15 +12,7 @@ public abstract class EventSubject<T,TEventParam> where T : IEventObserver<TEven
             target.OnNotify(eventType);
         }
     }
-    public void OnNotify()
-    {
-        for (int i = targetList.Count - 1; i >= 0; i--)
-        {
-            T target = targetList[i];
-            target.OnNotify();
-        }
-    }
-    public static void Add(T observer)
+    public static void Subscribe(T observer)
     {
         targetList.Add(observer);
     }
@@ -30,9 +22,8 @@ public abstract class EventSubject<T,TEventParam> where T : IEventObserver<TEven
     }
 
 }
-public interface IEventObserver<TEventParam>
+public interface IEventObserver
 {
-    void OnNotify();
-    void OnNotify(TEventParam eventParam);
+    void OnNotify(object eventParam);
 
 }

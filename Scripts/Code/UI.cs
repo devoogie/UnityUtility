@@ -8,7 +8,6 @@ using DG.Tweening;
 
 public abstract class UI : PoolableMono
 {
-    public static System.Action Refresh;
     public RectTransform rectTransform => transform as RectTransform;
     Dictionary<Type, UnityEngine.Object[]> _objects = new Dictionary<Type, UnityEngine.Object[]>();
     public RectTransform inner;
@@ -58,16 +57,5 @@ public abstract class UI : PoolableMono
         rectTransform.localScale = Vector3.one;
         rectTransform.rotation = Quaternion.identity;
     }
-    void OnEnable()
-    {
-        Refresh -= RefreshUI;
-        Refresh += RefreshUI;
-    }
-    void OnDisable()
-    {
-        Refresh -= RefreshUI;
-
-    }
-    public abstract void RefreshUI();
 
 }
