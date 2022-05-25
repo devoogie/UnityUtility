@@ -86,6 +86,13 @@ public static partial class Utility
 
         return list[0];
     }
+    public static T Repeat<T>(this T[] list, int index)
+    {
+        int count = list.Length;
+        index = Mathf.Repeat(index, count).ToRound();
+
+        return list[index];
+    }
     #endregion
     #region List 
     public static T Random<T>(this List<T> list, bool isRemove = false)
@@ -129,6 +136,13 @@ public static partial class Utility
     {
         int count = list.Count - 1;
         index = Mathf.Clamp(index, 0, count - 1);
+
+        return list[index];
+    }
+    public static T Repeat<T>(this List<T> list, int index)
+    {
+        int count = list.Count;
+        index = Mathf.Repeat(index, count).ToRound();
 
         return list[index];
     }

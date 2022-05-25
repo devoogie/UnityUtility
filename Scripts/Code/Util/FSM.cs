@@ -33,6 +33,8 @@ public class FSM<T> where T : System.Enum
     {
         if (CurrentState != null)
         {
+            if(stateType.Equals(lastStateType))
+                return;
             CurrentState.OnLeave();
             stateMachine.currentState = null;
         }

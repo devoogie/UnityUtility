@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IState<T> : IState where T : System.Enum
 {
-    event System.Action Leave;
+    System.Action Leave{get;set;}
     T LeaveTo { get; }
     
 }

@@ -6,7 +6,6 @@ public class StateMachine<T> where T : System.Enum
     {
         currentState = state;
         currentState?.OnEnter();
-        currentState?.OnProgress();
         return true;
     }
 }

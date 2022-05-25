@@ -37,5 +37,7 @@ public class CameraManager : MonoSingleton<CameraManager>
         public bool IsFollowZoom = false;
         public bool IsFitTarget = false;
         public Color BackgroundColor = ColorSet.Sky;
+        public float CameraWidth => Screen.width / (float)Screen.height * CameraZoom;
+        public float CameraHeight => CameraZoom;
     }
 }
