@@ -3,15 +3,15 @@ using UnityEngine;
 
 public abstract class PoolableMono : MonoBehaviour, IPoolableMono
 {
-    public void Despawn()
+    public void Hide()
     {
         if (this == null)
             return;
-        PoolManager.Despawn(this);
+        PoolManager.Hide(this);
     }
     public abstract void OnCreate();
-    public abstract void OnSpawn();
-    public abstract void OnDespawn();
+    public abstract void OnShow();
+    public abstract void OnHide();
     public void OnClear()
     {
         Destroy(gameObject);
@@ -19,24 +19,24 @@ public abstract class PoolableMono : MonoBehaviour, IPoolableMono
 
     public List<PoolableMono> children = new List<PoolableMono>();
     
-    public virtual void OnMonoDespawn()
+    public virtual void OnMonoHide()
     {
-        if(statePool == StatePool.Despawn)
+        if(statePool == StatePool.Hide)
             return;
-        statePool = StatePool.Despawn;
+        statePool = StatePool.Hide;
         gameObject.SetActive(false);
         foreach (var child in children)
         {
             if(child == this)
                 continue;
-            child.OnDespawn();
-            child.OnMonoDespawn();
+            child.OnHide();
+            child.OnMonoHide();
         }
     }
     bool isInitialized = false;
-    StatePool statePool = StatePool.Despawn;
+    StatePool statePool = StatePool.Hide;
     protected bool isChild = false;
-    public void OnMonoInitialize()
+    public void OnMonoCreate()
     {
         if(isInitialized)
             return;
@@ -51,10 +51,10 @@ public abstract class PoolableMono : MonoBehaviour, IPoolableMono
             child.isChild = true;
             children.Add(child);        
             child.OnCreate();
-            child.OnMonoInitialize();
+            child.OnMonoCreate();
         }
     }
-    public virtual void OnMonoSpawn()
+    public virtual void OnMonoShow()
     {
         if(statePool == StatePool.Spawn)
             return;
@@ -64,8 +64,8 @@ public abstract class PoolableMono : MonoBehaviour, IPoolableMono
         {
             if(child == this)
                 continue;
-            child.OnSpawn();
-            child.OnMonoSpawn();
+            child.OnShow();
+            child.OnMonoShow();
         }
     }
     
@@ -73,12 +73,12 @@ public abstract class PoolableMono : MonoBehaviour, IPoolableMono
 public enum StatePool
 {
     Spawn,
-    Despawn
+    Hide
 }
 public interface IPoolableMono : IPoolObject
 {
-    void OnMonoInitialize();
-    void OnMonoSpawn();
-    void OnMonoDespawn();
-    void Despawn();
+    void OnMonoCreate();
+    void OnMonoShow();
+    void OnMonoHide();
+    void Hide();
 }

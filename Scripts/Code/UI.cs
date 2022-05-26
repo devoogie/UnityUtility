@@ -48,9 +48,9 @@ public abstract class UI : PoolableMono
     protected TextMeshProUGUI GetText(System.Enum index) { return GetBind<TextMeshProUGUI>(Convert.ToInt32(index)); }
     protected Image GetImage(System.Enum index) { return GetBind<Image>(Convert.ToInt32(index)); }
     protected Button GetButton(System.Enum index) { return GetBind<Button>(Convert.ToInt32(index)); }
-    public override void OnMonoSpawn()
+    public override void OnMonoShow()
     {
-        base.OnMonoSpawn();
+        base.OnMonoShow();
         if(isChild)
             return;
         rectTransform.SetParent(UIManager.Instance.Main.transform);

@@ -14,21 +14,21 @@ public abstract class Pool<T> where T : IPoolObject
         _spawned = new List<T>();
         this._origin = origin;
     }
-    public T Spawn()
+    public T Show()
     {
-        CheckAddPool();
-        return SpawnFromDisable();
+        TryAdd();
+        return Pop();
     }
-    protected virtual T SpawnFromDisable()
+    protected virtual T Pop()
     {
         var spawn = _pooled.Pop();
         _spawned.Add(spawn);
-        spawn.OnSpawn();
+        spawn.OnShow();
         return spawn;
     }
-    private void CheckAddPool()
+    private void TryAdd()
     {
-        if (CheckSpawnable())
+        if (CheckPool())
             return;
         Add();
     }
@@ -41,7 +41,7 @@ public abstract class Pool<T> where T : IPoolObject
         return create;
     }
 
-    private bool CheckSpawnable()
+    private bool CheckPool()
     {
         while(_pooled.Count > 0)
         {
@@ -52,9 +52,9 @@ public abstract class Pool<T> where T : IPoolObject
         }
         return _pooled.Count > 0;
     }
-    public virtual void Despawn(T a)
+    public virtual void Hide(T a)
     {
-        a.OnDespawn();
+        a.OnHide();
         _spawned.Remove(a);
         _pooled.Push(a);
     }
@@ -73,7 +73,7 @@ public abstract class Pool<T> where T : IPoolObject
 public interface IPoolObject
 {
     void OnCreate();
-    void OnSpawn();
-    void OnDespawn();
+    void OnShow();
+    void OnHide();
     void OnClear();
 }

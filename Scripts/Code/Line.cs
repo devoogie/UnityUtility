@@ -4,7 +4,7 @@ public class Line : PoolableMono
 {
     public LineRenderer lineRenderer;
     public Material defaultMaterial;
-    public override void OnDespawn()
+    public override void OnHide()
     {
         lineRenderer.loop = false;
         SetMaterial(defaultMaterial);
@@ -19,7 +19,7 @@ public class Line : PoolableMono
         lineRenderer = GetComponentInChildren<LineRenderer>();
     }
 
-    public override void OnSpawn()
+    public override void OnShow()
     {
 
     }

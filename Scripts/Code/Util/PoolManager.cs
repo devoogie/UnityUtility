@@ -23,31 +23,31 @@ public class PoolManager : MonoSingleton<PoolManager>
             Pools.Add(resource.name, pool);
         }
     }
-    public static void Despawn<T>(T despawn) where T : PoolableMono
+    public static void Hide<T>(T destroy) where T : PoolableMono
     {
-        var pool = Instance.Pools[despawn.name];
-        pool.Despawn(despawn);
-        despawn.transform.Identity(pool.Branch);
+        var pool = Instance.Pools[destroy.name];
+        pool.Hide(destroy);
+        destroy.transform.Identity(pool.Branch);
     }
-    public static void DespawnAll(string name)
+    public static void HideAll(string name)
     {
         var pool = Instance.Pools[name];
         pool.Clear();
     }
-    public static T Spawn<T>() where T : PoolableMono
+    public static T Show<T>() where T : PoolableMono
     {
         var pool = Instance.Pools[typeof(T).ToString()];
-        var poolableMono = pool.Spawn();
+        var poolableMono = pool.Show();
         return poolableMono as T;
     }
-    public static T Spawn<T>(System.Enum name) where T : PoolableMono
+    public static T Show<T>(System.Enum name) where T : PoolableMono
     {
-        return Spawn<T>(name.ToString());
+        return Show<T>(name.ToString());
     }
-    public static T Spawn<T>(string name) where T : PoolableMono
+    public static T Show<T>(string name) where T : PoolableMono
     {
         var pool = Instance.Pools[name];
-        var poolableMono = pool.Spawn();
+        var poolableMono = pool.Show();
         return poolableMono as T;
     }
     public static int GetCount(string key)
