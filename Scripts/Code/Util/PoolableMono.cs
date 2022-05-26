@@ -80,4 +80,5 @@ public interface IPoolableMono : IPoolObject
     void OnMonoInitialize();
     void OnMonoSpawn();
     void OnMonoDespawn();
+    void Despawn();
 }
