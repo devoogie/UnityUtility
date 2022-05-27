@@ -5,7 +5,7 @@ public enum Grade
     Normal,
     Rare,
     Epic,
-    Legend
+    Legendary
 }
 public static class GradeExtension
 {
@@ -19,7 +19,7 @@ public static class GradeExtension
                 return ColorSet.Grade_Rare;
             case Grade.Epic:
                 return ColorSet.Grade_Epic;
-            case Grade.Legend:
+            case Grade.Legendary:
                 return ColorSet.Grade_Legend;
             default:
                 return ColorSet.Grade_Normal;
@@ -35,7 +35,7 @@ public static class GradeExtension
                 return ColorSet.Grade_Rare_Upgrade;
             case Grade.Epic:
                 return ColorSet.Grade_Epic_Upgrade;
-            case Grade.Legend:
+            case Grade.Legendary:
                 return ColorSet.Grade_Legend_Upgrade;
             default:
                 return ColorSet.Grade_Normal_Upgrade;
