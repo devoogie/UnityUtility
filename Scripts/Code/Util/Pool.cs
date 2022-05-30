@@ -56,6 +56,8 @@ public abstract class Pool<T> where T : IPoolObject
     {
         a.OnHide();
         _spawned.Remove(a);
+        if(_pooled.Contains(a))
+            return;
         _pooled.Push(a);
     }
     public virtual void Clear()
