@@ -38,4 +38,5 @@ public static class ColorSet
     public static readonly Color Status_Speed = "#68D1DA".ToColor();
 
     public static readonly Color Sky = "#3FB3F1".ToColor();
+    public static readonly Color DarkRed = "#B90000".ToColor();
 }
