@@ -41,4 +41,20 @@ public static class GradeExtension
                 return ColorSet.Grade_Normal_Upgrade;
         }
     }
+    public const int Weight_Normal = 50;
+    public const int Weight_Rare = 25;
+    public const int Weight_Epic = 15;
+    public const int Weight_Legendary = 10;
+    public static Grade GetRandomGrade()
+    {
+        var random = Random.Range(0, 100);
+        return random switch
+        {
+            _ when random < Weight_Normal => Grade.Normal,
+            _ when random < Weight_Normal + Weight_Rare => Grade.Rare,
+            _ when random < Weight_Normal + Weight_Rare + Weight_Epic => Grade.Epic,
+            _ when random < Weight_Normal + Weight_Rare + Weight_Epic + Weight_Legendary => Grade.Legendary,
+            _ => Grade.Legendary,
+        };
+    }
 }
