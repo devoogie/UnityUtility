@@ -179,41 +179,6 @@ public static partial class Utility
             return true;
         return UnityEngine.Random.Range(0, max) < value;
     }
-    public static bool TryAddOrUpdateValue<TKey, TValue>(this Dictionary<TKey, TValue> variable, TKey key, TValue value)
-    {
-        bool result;
-        try
-        {
-            if (variable.ContainsKey(key))
-            {
-                variable[key] = value;
-                result = true;
-            }
-            else
-                result = variable.TryAddValue(key, value);
-        }
-        catch
-        {
-            result = false;
-        }
-
-        return result;
-    }
-
-    public static bool TryAddValue<TKey, TValue>(this Dictionary<TKey, TValue> variable, TKey key, TValue value)
-    {
-        bool result;
-        try
-        {
-            variable.Add(key, value);
-            result = true;
-        }
-        catch
-        {
-            result = false;
-        }
-        return result;
-    }
     public static int RandomIndex(params float[] ranges)
     {
         float max = 0;
