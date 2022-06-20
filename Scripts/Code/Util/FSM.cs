@@ -42,11 +42,12 @@ public class FSM<T> where T : System.Enum
         if (stateDictionary.ContainsKey(stateType))
             SetState(stateType);
     }
-    public void LeaveCurrent()
+    public void LeaveCurrent(T current)
     {
         if (stateMachine.currentState == null)
             return;
-        SwitchState(CurrentState.LeaveTo);
+        if(current.Equals(stateMachine.currentState.Current))
+            SwitchState(CurrentState.LeaveTo);
     }
     public void Progress()
     {

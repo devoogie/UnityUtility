@@ -4,7 +4,8 @@ using UnityEngine;
 
 public interface IState<T> : IState where T : System.Enum
 {
-    System.Action Leave{get;set;}
+    System.Action<T> Leave{get;set;}
+    T Current { get; }
     T LeaveTo { get; }
     
 }
