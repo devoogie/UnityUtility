@@ -12,7 +12,7 @@ public class PoolManager : MonoSingleton<PoolManager>
         Pools.Clear();
         AddPool("Pool");
         // AddPool("Pool/Bullet");
-        
+
     }
     void AddPool(string path)
     {
@@ -29,7 +29,7 @@ public class PoolManager : MonoSingleton<PoolManager>
         pool.Hide(destroy);
         destroy.transform.Identity(pool.Branch);
     }
-    public static void HideAll(string name)
+    public static void Clear(string name)
     {
         var pool = Instance.Pools[name];
         pool.Clear();
