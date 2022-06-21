@@ -40,5 +40,5 @@ public static class ColorSet
     public static readonly Color Sky = "#3FB3F1".ToColor();
     public static readonly Color DarkRed = "#B90000".ToColor();
     public static readonly Color EXP_NORMAL = "#2FE097".ToColor();
-    public static readonly Color EXP_MAX = "#0861DA".ToColor();
+    public static readonly Color EXP_MAX = "#48BCEA".ToColor();
 }

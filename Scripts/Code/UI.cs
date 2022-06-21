@@ -14,10 +14,10 @@ public abstract class UI : PoolableMono
 
     public void AnimateOpen()
     {
-        if(inner == null)
+        if (inner == null)
             return;
 
-        inner.localScale = Vector3.zero;
+        inner.localScale = Vector3.one * 0.2f;
         inner.DOScale(Vector3.one, 0.3f).SetEase(Ease.OutBack);
     }
     protected void Bind<TBind, TEnum>() where TBind : UnityEngine.Object
@@ -51,7 +51,7 @@ public abstract class UI : PoolableMono
     public override void OnMonoShow()
     {
         base.OnMonoShow();
-        if(isChild)
+        if (isChild)
             return;
         rectTransform.SetParent(UIManager.Instance.Main.transform);
         rectTransform.localScale = Vector3.one;
