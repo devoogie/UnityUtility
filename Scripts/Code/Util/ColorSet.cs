@@ -41,4 +41,6 @@ public static class ColorSet
     public static readonly Color DarkRed = "#B90000".ToColor();
     public static readonly Color EXP_NORMAL = "#2FE097".ToColor();
     public static readonly Color EXP_MAX = "#48BCEA".ToColor();
+    public static readonly Color Bullet_Blue = "#00ABFF".ToColor();
+    public static readonly Color Bullet_Yellow = "#FFFD53".ToColor();
 }
