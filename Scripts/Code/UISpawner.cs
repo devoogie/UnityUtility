@@ -24,6 +24,13 @@ public class UISpawner : UI
         spawned.transform.Identity(transform);
         return spawned;
     }
+    public T Show<T>(string key) where T : UI
+    {
+        var spawned = PoolManager.Show<T>(key);
+        elements.Add(spawned);
+        spawned.rectTransform.Identity(transform);
+        return spawned;
+    }
     public void HideAll()
     {
         for (int i = elements.Count - 1; i >= 0; --i)
