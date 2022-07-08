@@ -89,9 +89,8 @@ public static partial class Utility
     public static T Repeat<T>(this T[] list, int index)
     {
         int count = list.Length;
-        index = Mathf.Repeat(index, count).ToRound();
-
-        return list[index];
+        int remain = index % count;
+        return list[remain];
     }
     #endregion
     #region List 
