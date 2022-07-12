@@ -35,6 +35,7 @@ public abstract class PoolableMono : MonoBehaviour, IPoolableMono
     }
     bool isInitialized = false;
     StatePool statePool = StatePool.Hide;
+    public StatePool StatePool => statePool;
     protected bool isChild = false;
     public void OnMonoCreate()
     {
