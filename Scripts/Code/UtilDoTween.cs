@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
-public static partial class Unity_Utility
+public static partial class UnityUtility
 {
 
-    public static void Transition(this RectTransform from,RectTransform to,float duration,Direction direction,System.Action onComplete)
+    public static void Transition(this RectTransform from, RectTransform to, float duration, Direction direction, System.Action onComplete)
     {
         Vector2 fromMin;
         Vector2 fromMax;
@@ -74,7 +74,7 @@ public static partial class Unity_Utility
                 toSetMax = new Vector2(2, 1);
                 break;
         }
-        
+
         to.anchorMin = toSetMin;
         to.anchorMax = toSetMax;
         to.sizeDelta = Vector2.zero;
