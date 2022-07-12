@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using DG.Tweening;
 using UnityEngine;
 
 public static partial class Utility
@@ -17,7 +16,7 @@ public static partial class Utility
         rectTransform.anchoredPosition = Vector2.zero;
         rectTransform.sizeDelta = Vector2.zero;
     }
-    public static void Identity(this RectTransform rectTransform,Transform parent)
+    public static void Identity(this RectTransform rectTransform, Transform parent)
     {
         rectTransform.SetParent(parent);
         rectTransform.Identity();
