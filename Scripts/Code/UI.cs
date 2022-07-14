@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using DG.Tweening;
 
 public abstract class UI : PoolableMono
 {
@@ -18,7 +17,6 @@ public abstract class UI : PoolableMono
             return;
 
         inner.localScale = Vector3.one * 0.2f;
-        inner.DOScale(Vector3.one, 0.3f).SetEase(Ease.OutBack);
     }
     protected void Bind<TBind, TEnum>() where TBind : UnityEngine.Object
     {
