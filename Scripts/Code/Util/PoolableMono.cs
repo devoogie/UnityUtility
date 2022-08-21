@@ -10,7 +10,7 @@ public abstract class PoolableMono : MonoBehaviour, IPoolableMono
         PoolManager.Hide(this);
     }
     public abstract void OnCreate();
-    public abstract void OnShow();
+    public abstract void OnSpawn();
     public abstract void OnHide();
     public void OnClear()
     {
@@ -65,7 +65,7 @@ public abstract class PoolableMono : MonoBehaviour, IPoolableMono
         {
             if(child == this)
                 continue;
-            child.OnShow();
+            child.OnSpawn();
             child.OnMonoShow();
         }
     }

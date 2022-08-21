@@ -23,7 +23,7 @@ public abstract class Pool<T> where T : IPoolObject
     {
         var spawn = _pooled.Pop();
         _spawned.Add(spawn);
-        spawn.OnShow();
+        spawn.OnSpawn();
         return spawn;
     }
     private void TryAdd()
@@ -75,7 +75,7 @@ public abstract class Pool<T> where T : IPoolObject
 public interface IPoolObject
 {
     void OnCreate();
-    void OnShow();
+    void OnSpawn();
     void OnHide();
     void OnClear();
 }

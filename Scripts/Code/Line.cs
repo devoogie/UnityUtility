@@ -19,7 +19,7 @@ public class Line : PoolableMono
         lineRenderer = GetComponentInChildren<LineRenderer>();
     }
 
-    public override void OnShow()
+    public override void OnSpawn()
     {
 
     }

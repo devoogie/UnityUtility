@@ -6,7 +6,7 @@ public class UISpawner : UI
     {
     }
 
-    public override void OnShow()
+    public override void OnSpawn()
     {
     }
 
